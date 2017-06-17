@@ -1,0 +1,66 @@
+﻿@model ModelCL.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioNombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioNombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioPass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioPass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioFchIng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioFchIng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UsuarioApp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UsuarioApp)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UsuarioId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

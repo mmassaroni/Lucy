@@ -1,0 +1,10 @@
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\Modelos.dll.config
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\Modelos.dll
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\Modelos.pdb
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\EntityFramework.dll
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\EntityFramework.SqlServer.dll
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\EntityFramework.xml
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\bin\Debug\EntityFramework.SqlServer.xml
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\obj\Debug\Modelos.csprojResolveAssemblyReference.cache
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\obj\Debug\Modelos.dll
+d:\documents\visual studio 2017\Projects\Lucy\Modelos\obj\Debug\Modelos.pdb

@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AgustinaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="ModuloId" />
+          </Key>
+          <Property Name="ModuloId" Type="smallint" Nullable="false" />
+          <Property Name="ModuloNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ModuloDesc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="bigint" Nullable="false" />
+          <Property Name="PersonaNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PersonaApellido" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PersonaFchNac" Type="date" Nullable="false" />
+          <Property Name="PersonaFchIng" Type="datetime" Nullable="false" />
+          <Property Name="SexoId" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelRolMod">
+          <Key>
+            <PropertyRef Name="RolId" />
+            <PropertyRef Name="ModuloId" />
+          </Key>
+          <Property Name="RolId" Type="smallint" Nullable="false" />
+          <Property Name="ModuloId" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelUsuPer">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="UsuarioId" Type="bigint" Nullable="false" />
+          <Property Name="PersonaId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RelUsuRol">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="UsuarioId" Type="bigint" Nullable="false" />
+          <Property Name="RolId" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="smallint" Nullable="false" />
+          <Property Name="RolNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="RolDesc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="SexoId" />
+          </Key>
+          <Property Name="SexoId" Type="smallint" Nullable="false" />
+          <Property Name="SexoNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SexoDesc" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="bigint" Nullable="false" />
+          <Property Name="UsuarioNombre" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioEmail" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="UsuarioPass" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UsuarioImg" Type="varchar(max)" />
+          <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioApp" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Persona_SexoId">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SexoId" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="SexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelRolMod_ModuloId">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelRolMod" Type="Self.RelRolMod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulo">
+              <PropertyRef Name="ModuloId" />
+            </Principal>
+            <Dependent Role="RelRolMod">
+              <PropertyRef Name="ModuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelRolMod_RolId">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelRolMod" Type="Self.RelRolMod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="RelRolMod">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelUsuPer_PersonaId">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelUsuPer" Type="Self.RelUsuPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="PersonaId" />
+            </Principal>
+            <Dependent Role="RelUsuPer">
+              <PropertyRef Name="PersonaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelUsuPer_UsuarioId">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelUsuPer" Type="Self.RelUsuPer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="RelUsuPer">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelUsuRol_RolId">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelUsuRol" Type="Self.RelUsuRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="RelUsuRol">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RelUsuRol_UsuarioId">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RelUsuRol" Type="Self.RelUsuRol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="UsuarioId" />
+            </Principal>
+            <Dependent Role="RelUsuRol">
+              <PropertyRef Name="UsuarioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AgustinaModelStoreContainer">
+          <EntitySet Name="Modulo" EntityType="Self.Modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelRolMod" EntityType="Self.RelRolMod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelUsuPer" EntityType="Self.RelUsuPer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelUsuRol" EntityType="Self.RelUsuRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sexo" EntityType="Self.Sexo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Persona_SexoId" Association="Self.FK_Persona_SexoId">
+            <End Role="Sexo" EntitySet="Sexo" />
+            <End Role="Persona" EntitySet="Persona" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelRolMod_ModuloId" Association="Self.FK_RelRolMod_ModuloId">
+            <End Role="Modulo" EntitySet="Modulo" />
+            <End Role="RelRolMod" EntitySet="RelRolMod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelRolMod_RolId" Association="Self.FK_RelRolMod_RolId">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RelRolMod" EntitySet="RelRolMod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelUsuPer_PersonaId" Association="Self.FK_RelUsuPer_PersonaId">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="RelUsuPer" EntitySet="RelUsuPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelUsuPer_UsuarioId" Association="Self.FK_RelUsuPer_UsuarioId">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RelUsuPer" EntitySet="RelUsuPer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelUsuRol_RolId" Association="Self.FK_RelUsuRol_RolId">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RelUsuRol" EntitySet="RelUsuRol" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RelUsuRol_UsuarioId" Association="Self.FK_RelUsuRol_UsuarioId">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="RelUsuRol" EntitySet="RelUsuRol" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AgustinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Modulo">
+          <Key>
+            <PropertyRef Name="ModuloId" />
+          </Key>
+          <Property Name="ModuloId" Type="Int16" Nullable="false" />
+          <Property Name="ModuloNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ModuloDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Rols" Relationship="Self.RelRolMod" FromRole="Modulo" ToRole="Rol" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="PersonaId" />
+          </Key>
+          <Property Name="PersonaId" Type="Int64" Nullable="false" />
+          <Property Name="PersonaNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PersonaApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PersonaFchNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PersonaFchIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SexoId" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Sexo" Relationship="Self.FK_Persona_SexoId" FromRole="Persona" ToRole="Sexo" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int16" Nullable="false" />
+          <Property Name="RolNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RolDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Moduloes" Relationship="Self.RelRolMod" FromRole="Rol" ToRole="Modulo" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.RelUsuRol" FromRole="Rol" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Sexo">
+          <Key>
+            <PropertyRef Name="SexoId" />
+          </Key>
+          <Property Name="SexoId" Type="Int16" Nullable="false" />
+          <Property Name="SexoNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SexoDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Personas" Relationship="Self.FK_Persona_SexoId" FromRole="Sexo" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int64" Nullable="false" />
+          <Property Name="UsuarioNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UsuarioImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UsuarioFchIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Personas" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
+          <NavigationProperty Name="Rols" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK_Persona_SexoId">
+          <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sexo">
+              <PropertyRef Name="SexoId" />
+            </Principal>
+            <Dependent Role="Persona">
+              <PropertyRef Name="SexoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="RelRolMod">
+          <End Role="Modulo" Type="Self.Modulo" Multiplicity="*" />
+          <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
+        </Association>
+        <Association Name="RelUsuPer">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <Association Name="RelUsuRol">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AgustinaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Moduloes" EntityType="Self.Modulo" />
+          <EntitySet Name="Personas" EntityType="Self.Persona" />
+          <EntitySet Name="Rols" EntityType="Self.Rol" />
+          <EntitySet Name="Sexoes" EntityType="Self.Sexo" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Persona_SexoId" Association="Self.FK_Persona_SexoId">
+            <End Role="Sexo" EntitySet="Sexoes" />
+            <End Role="Persona" EntitySet="Personas" />
+          </AssociationSet>
+          <AssociationSet Name="RelRolMod" Association="Self.RelRolMod">
+            <End Role="Modulo" EntitySet="Moduloes" />
+            <End Role="Rol" EntitySet="Rols" />
+          </AssociationSet>
+          <AssociationSet Name="RelUsuPer" Association="Self.RelUsuPer">
+            <End Role="Persona" EntitySet="Personas" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="RelUsuRol" Association="Self.RelUsuRol">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AgustinaModelStoreContainer" CdmEntityContainer="AgustinaEntities">
+          <EntitySetMapping Name="Moduloes">
+            <EntityTypeMapping TypeName="AgustinaModel.Modulo">
+              <MappingFragment StoreEntitySet="Modulo">
+                <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
+                <ScalarProperty Name="ModuloNombre" ColumnName="ModuloNombre" />
+                <ScalarProperty Name="ModuloDesc" ColumnName="ModuloDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personas">
+            <EntityTypeMapping TypeName="AgustinaModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+                <ScalarProperty Name="PersonaNombre" ColumnName="PersonaNombre" />
+                <ScalarProperty Name="PersonaApellido" ColumnName="PersonaApellido" />
+                <ScalarProperty Name="PersonaFchNac" ColumnName="PersonaFchNac" />
+                <ScalarProperty Name="PersonaFchIng" ColumnName="PersonaFchIng" />
+                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="AgustinaModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+                <ScalarProperty Name="RolDesc" ColumnName="RolDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sexoes">
+            <EntityTypeMapping TypeName="AgustinaModel.Sexo">
+              <MappingFragment StoreEntitySet="Sexo">
+                <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+                <ScalarProperty Name="SexoNombre" ColumnName="SexoNombre" />
+                <ScalarProperty Name="SexoDesc" ColumnName="SexoDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="AgustinaModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
+                <ScalarProperty Name="UsuarioEmail" ColumnName="UsuarioEmail" />
+                <ScalarProperty Name="UsuarioPass" ColumnName="UsuarioPass" />
+                <ScalarProperty Name="UsuarioImg" ColumnName="UsuarioImg" />
+                <ScalarProperty Name="UsuarioFchIng" ColumnName="UsuarioFchIng" />
+                <ScalarProperty Name="UsuarioApp" ColumnName="UsuarioApp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RelRolMod" TypeName="AgustinaModel.RelRolMod" StoreEntitySet="RelRolMod">
+            <EndProperty Name="Modulo">
+              <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
+            </EndProperty>
+            <EndProperty Name="Rol">
+              <ScalarProperty Name="RolId" ColumnName="RolId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelUsuPer" TypeName="AgustinaModel.RelUsuPer" StoreEntitySet="RelUsuPer">
+            <EndProperty Name="Persona">
+              <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RelUsuRol" TypeName="AgustinaModel.RelUsuRol" StoreEntitySet="RelUsuRol">
+            <EndProperty Name="Rol">
+              <ScalarProperty Name="RolId" ColumnName="RolId" />
+            </EndProperty>
+            <EndProperty Name="Usuario">
+              <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

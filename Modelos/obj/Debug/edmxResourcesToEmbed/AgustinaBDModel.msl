@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgustinaBDModelStoreContainer" CdmEntityContainer="AgustinaEntities">
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="AgustinaBDModel.Modulo">
+        <MappingFragment StoreEntitySet="Modulo">
+          <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
+          <ScalarProperty Name="ModuloNombre" ColumnName="ModuloNombre" />
+          <ScalarProperty Name="ModuloDesc" ColumnName="ModuloDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="AgustinaBDModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+          <ScalarProperty Name="PersonaNombre" ColumnName="PersonaNombre" />
+          <ScalarProperty Name="PersonaApellido" ColumnName="PersonaApellido" />
+          <ScalarProperty Name="PersonaFchNac" ColumnName="PersonaFchNac" />
+          <ScalarProperty Name="PersonaFchIng" ColumnName="PersonaFchIng" />
+          <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="AgustinaBDModel.Rol">
+        <MappingFragment StoreEntitySet="Rol">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
+          <ScalarProperty Name="RolDesc" ColumnName="RolDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sexo">
+      <EntityTypeMapping TypeName="AgustinaBDModel.Sexo">
+        <MappingFragment StoreEntitySet="Sexo">
+          <ScalarProperty Name="SexoId" ColumnName="SexoId" />
+          <ScalarProperty Name="SexoNombre" ColumnName="SexoNombre" />
+          <ScalarProperty Name="SexoDesc" ColumnName="SexoDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="AgustinaBDModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
+          <ScalarProperty Name="UsuarioEmail" ColumnName="UsuarioEmail" />
+          <ScalarProperty Name="UsuarioPass" ColumnName="UsuarioPass" />
+          <ScalarProperty Name="UsuarioImg" ColumnName="UsuarioImg" />
+          <ScalarProperty Name="UsuarioFchIng" ColumnName="UsuarioFchIng" />
+          <ScalarProperty Name="UsuarioApp" ColumnName="UsuarioApp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RelRolMod" TypeName="AgustinaBDModel.RelRolMod" StoreEntitySet="RelRolMod">
+      <EndProperty Name="Modulo">
+        <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
+      </EndProperty>
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="RolId" ColumnName="RolId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelUsuPer" TypeName="AgustinaBDModel.RelUsuPer" StoreEntitySet="RelUsuPer">
+      <EndProperty Name="Persona">
+        <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RelUsuRol" TypeName="AgustinaBDModel.RelUsuRol" StoreEntitySet="RelUsuRol">
+      <EndProperty Name="Rol">
+        <ScalarProperty Name="RolId" ColumnName="RolId" />
+      </EndProperty>
+      <EndProperty Name="Usuario">
+        <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
