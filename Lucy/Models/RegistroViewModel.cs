@@ -43,7 +43,9 @@ namespace Lucy.Models
 
         [Required]
         [Display(Name = "Fecha de nacimiento")]
+        [DataType(DataType.Date)]
         public System.DateTime PersonaFchNac { get; set; }
+
         [Required]
         public ModelCL.Sexo SexoId { get; set; }
     }
