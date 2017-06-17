@@ -19,26 +19,31 @@ namespace Lucy.Models
 
         [Required]
         [EmailAddress]
+        [StringLength(60)]
         [Display(Name = "Email")]
         public string UsuarioEmail { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Este campo debe tener un largo mínimo de {2} caracteres.")]
         [Display(Name = "Contraseña")]
         public string UsuarioPass { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Este campo debe tener un largo mínimo de {2} caracteres.")]
         [Compare("UsuarioPass", ErrorMessage = "Las contraseñas no coinciden")]
         [Display(Name = "Confirmar contraseña")]
         public string UsuarioPassConfirmacion { get; set; }
 
         [Required]
         [Display(Name = "Nombre")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Este campo debe tener un largo mínimo de {2} caracteres.")]
         public string PersonaNombre { get; set; }
 
         [Required]
         [Display(Name = "Apellido")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "Este campo debe tener un largo mínimo de {2} caracteres.")]
         public string PersonaApellido { get; set; }
 
         [Required]
@@ -47,6 +52,7 @@ namespace Lucy.Models
         public System.DateTime PersonaFchNac { get; set; }
 
         [Required]
+        [Display(Name = "Sexo")]
         public ModelCL.Sexo SexoId { get; set; }
     }
 }
