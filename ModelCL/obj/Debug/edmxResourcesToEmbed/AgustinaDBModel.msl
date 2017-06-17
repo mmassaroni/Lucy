@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="AgustinaModelStoreContainer" CdmEntityContainer="AgustinaEntities">
-    <EntitySetMapping Name="Moduloes">
-      <EntityTypeMapping TypeName="AgustinaModel.Modulo">
+  <EntityContainerMapping StorageEntityContainer="AgustinaDBModelStoreContainer" CdmEntityContainer="AgustinaEntities">
+    <EntitySetMapping Name="Modulo">
+      <EntityTypeMapping TypeName="AgustinaDBModel.Modulo">
         <MappingFragment StoreEntitySet="Modulo">
           <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
           <ScalarProperty Name="ModuloNombre" ColumnName="ModuloNombre" />
@@ -10,8 +10,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Personas">
-      <EntityTypeMapping TypeName="AgustinaModel.Persona">
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="AgustinaDBModel.Persona">
         <MappingFragment StoreEntitySet="Persona">
           <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
           <ScalarProperty Name="PersonaNombre" ColumnName="PersonaNombre" />
@@ -22,8 +22,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Rols">
-      <EntityTypeMapping TypeName="AgustinaModel.Rol">
+    <EntitySetMapping Name="Rol">
+      <EntityTypeMapping TypeName="AgustinaDBModel.Rol">
         <MappingFragment StoreEntitySet="Rol">
           <ScalarProperty Name="RolId" ColumnName="RolId" />
           <ScalarProperty Name="RolNombre" ColumnName="RolNombre" />
@@ -31,8 +31,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sexoes">
-      <EntityTypeMapping TypeName="AgustinaModel.Sexo">
+    <EntitySetMapping Name="Sexo">
+      <EntityTypeMapping TypeName="AgustinaDBModel.Sexo">
         <MappingFragment StoreEntitySet="Sexo">
           <ScalarProperty Name="SexoId" ColumnName="SexoId" />
           <ScalarProperty Name="SexoNombre" ColumnName="SexoNombre" />
@@ -40,8 +40,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="AgustinaModel.Usuario">
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="AgustinaDBModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
           <ScalarProperty Name="UsuarioNombre" ColumnName="UsuarioNombre" />
@@ -53,7 +53,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="RelRolMod" TypeName="AgustinaModel.RelRolMod" StoreEntitySet="RelRolMod">
+    <AssociationSetMapping Name="RelRolMod" TypeName="AgustinaDBModel.RelRolMod" StoreEntitySet="RelRolMod">
       <EndProperty Name="Modulo">
         <ScalarProperty Name="ModuloId" ColumnName="ModuloId" />
       </EndProperty>
@@ -61,7 +61,7 @@
         <ScalarProperty Name="RolId" ColumnName="RolId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RelUsuPer" TypeName="AgustinaModel.RelUsuPer" StoreEntitySet="RelUsuPer">
+    <AssociationSetMapping Name="RelUsuPer" TypeName="AgustinaDBModel.RelUsuPer" StoreEntitySet="RelUsuPer">
       <EndProperty Name="Persona">
         <ScalarProperty Name="PersonaId" ColumnName="PersonaId" />
       </EndProperty>
@@ -69,7 +69,7 @@
         <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RelUsuRol" TypeName="AgustinaModel.RelUsuRol" StoreEntitySet="RelUsuRol">
+    <AssociationSetMapping Name="RelUsuRol" TypeName="AgustinaDBModel.RelUsuRol" StoreEntitySet="RelUsuRol">
       <EndProperty Name="Rol">
         <ScalarProperty Name="RolId" ColumnName="RolId" />
       </EndProperty>

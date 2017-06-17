@@ -17,7 +17,7 @@ namespace ModelCL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sexo()
         {
-            this.Personas = new HashSet<Persona>();
+            this.Persona = new HashSet<Persona>();
         }
     
         public short SexoId { get; set; }
@@ -25,6 +25,6 @@ namespace ModelCL
         public string SexoDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Persona> Personas { get; set; }
+        public virtual ICollection<Persona> Persona { get; set; }
     }
 }

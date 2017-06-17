@@ -17,8 +17,8 @@ namespace ModelCL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            this.Personas = new HashSet<Persona>();
-            this.Rols = new HashSet<Rol>();
+            this.Persona = new HashSet<Persona>();
+            this.Rol = new HashSet<Rol>();
         }
     
         public long UsuarioId { get; set; }
@@ -30,8 +30,8 @@ namespace ModelCL
         public string UsuarioApp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Persona> Personas { get; set; }
+        public virtual ICollection<Persona> Persona { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rol> Rols { get; set; }
+        public virtual ICollection<Rol> Rol { get; set; }
     }
 }

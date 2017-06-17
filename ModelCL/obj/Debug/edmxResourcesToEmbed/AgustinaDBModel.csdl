@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AgustinaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="AgustinaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Modulo">
     <Key>
       <PropertyRef Name="ModuloId" />
@@ -7,7 +7,7 @@
     <Property Name="ModuloId" Type="Int16" Nullable="false" />
     <Property Name="ModuloNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ModuloDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Rols" Relationship="Self.RelRolMod" FromRole="Modulo" ToRole="Rol" />
+    <NavigationProperty Name="Rol" Relationship="Self.RelRolMod" FromRole="Modulo" ToRole="Rol" />
   </EntityType>
   <EntityType Name="Persona">
     <Key>
@@ -20,7 +20,7 @@
     <Property Name="PersonaFchIng" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="SexoId" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Sexo" Relationship="Self.FK_Persona_SexoId" FromRole="Persona" ToRole="Sexo" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
+    <NavigationProperty Name="Usuario" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Rol">
     <Key>
@@ -29,8 +29,8 @@
     <Property Name="RolId" Type="Int16" Nullable="false" />
     <Property Name="RolNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="RolDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Moduloes" Relationship="Self.RelRolMod" FromRole="Rol" ToRole="Modulo" />
-    <NavigationProperty Name="Usuarios" Relationship="Self.RelUsuRol" FromRole="Rol" ToRole="Usuario" />
+    <NavigationProperty Name="Modulo" Relationship="Self.RelRolMod" FromRole="Rol" ToRole="Modulo" />
+    <NavigationProperty Name="Usuario" Relationship="Self.RelUsuRol" FromRole="Rol" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Sexo">
     <Key>
@@ -39,7 +39,7 @@
     <Property Name="SexoId" Type="Int16" Nullable="false" />
     <Property Name="SexoNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="SexoDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Personas" Relationship="Self.FK_Persona_SexoId" FromRole="Sexo" ToRole="Persona" />
+    <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_SexoId" FromRole="Sexo" ToRole="Persona" />
   </EntityType>
   <EntityType Name="Usuario">
     <Key>
@@ -52,8 +52,8 @@
     <Property Name="UsuarioImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="UsuarioFchIng" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UsuarioApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Personas" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
-    <NavigationProperty Name="Rols" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />
+    <NavigationProperty Name="Persona" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
+    <NavigationProperty Name="Rol" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />
   </EntityType>
   <Association Name="FK_Persona_SexoId">
     <End Role="Sexo" Type="Self.Sexo" Multiplicity="1" />
@@ -80,26 +80,26 @@
     <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
   </Association>
   <EntityContainer Name="AgustinaEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Moduloes" EntityType="Self.Modulo" />
-    <EntitySet Name="Personas" EntityType="Self.Persona" />
-    <EntitySet Name="Rols" EntityType="Self.Rol" />
-    <EntitySet Name="Sexoes" EntityType="Self.Sexo" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Modulo" EntityType="Self.Modulo" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" />
+    <EntitySet Name="Sexo" EntityType="Self.Sexo" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
     <AssociationSet Name="FK_Persona_SexoId" Association="Self.FK_Persona_SexoId">
-      <End Role="Sexo" EntitySet="Sexoes" />
-      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Sexo" EntitySet="Sexo" />
+      <End Role="Persona" EntitySet="Persona" />
     </AssociationSet>
     <AssociationSet Name="RelRolMod" Association="Self.RelRolMod">
-      <End Role="Modulo" EntitySet="Moduloes" />
-      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Modulo" EntitySet="Modulo" />
+      <End Role="Rol" EntitySet="Rol" />
     </AssociationSet>
     <AssociationSet Name="RelUsuPer" Association="Self.RelUsuPer">
-      <End Role="Persona" EntitySet="Personas" />
-      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
     <AssociationSet Name="RelUsuRol" Association="Self.RelUsuRol">
-      <End Role="Rol" EntitySet="Rols" />
-      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Rol" EntitySet="Rol" />
+      <End Role="Usuario" EntitySet="Usuario" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

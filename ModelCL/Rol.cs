@@ -17,8 +17,8 @@ namespace ModelCL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Rol()
         {
-            this.Moduloes = new HashSet<Modulo>();
-            this.Usuarios = new HashSet<Usuario>();
+            this.Modulo = new HashSet<Modulo>();
+            this.Usuario = new HashSet<Usuario>();
         }
     
         public short RolId { get; set; }
@@ -26,8 +26,8 @@ namespace ModelCL
         public string RolDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Modulo> Moduloes { get; set; }
+        public virtual ICollection<Modulo> Modulo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public virtual ICollection<Usuario> Usuario { get; set; }
     }
 }

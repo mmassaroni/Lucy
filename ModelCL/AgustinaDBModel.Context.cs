@@ -25,10 +25,10 @@ namespace ModelCL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Modulo> Moduloes { get; set; }
-        public virtual DbSet<Persona> Personas { get; set; }
-        public virtual DbSet<Rol> Rols { get; set; }
-        public virtual DbSet<Sexo> Sexoes { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<Modulo> Modulo { get; set; }
+        public virtual DbSet<Persona> Persona { get; set; }
+        public virtual DbSet<Rol> Rol { get; set; }
+        public virtual DbSet<Sexo> Sexo { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
     }
 }

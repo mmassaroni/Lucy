@@ -17,14 +17,20 @@ namespace Lucy.Controllers
 
         public ActionResult Registro()
         {
-            //Registro Registro = new Registro();
-            return View();
+            RegistroViewModel Registro = new RegistroViewModel();
+            //List<ModelCL.Sexo> lSexo = new List<ModelCL.Sexo>();
+            //lSexo = db.Sexoes.ToList();
+            //ViewBag.listaSexos = lSexo;
+            List<ModelCL.Sexo> lSexo = db.Sexo.ToList();
+            ViewBag.listaSexos = new SelectList(lSexo, "SexoId", "SexoNombre");
+
+            return View(Registro);
         }
 
         // GET: Usuarios
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(db.Usuario.ToList());
         }
 
         // GET: Usuarios/Details/5
@@ -34,7 +40,7 @@ namespace Lucy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -57,7 +63,7 @@ namespace Lucy.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
+                db.Usuario.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -72,7 +78,7 @@ namespace Lucy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -103,7 +109,7 @@ namespace Lucy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
+            Usuario usuario = db.Usuario.Find(id);
             if (usuario == null)
             {
                 return HttpNotFound();
@@ -116,8 +122,8 @@ namespace Lucy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
+            Usuario usuario = db.Usuario.Find(id);
+            db.Usuario.Remove(usuario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
