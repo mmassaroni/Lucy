@@ -7,4 +7,3 @@ d:\documents\visual studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.SqlServer.xml
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.dll
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.pdb
-D:\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.csprojResolveAssemblyReference.cache

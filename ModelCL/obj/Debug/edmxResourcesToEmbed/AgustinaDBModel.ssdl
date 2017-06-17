@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="ModuloId" />
     </Key>
-    <Property Name="ModuloId" Type="smallint" Nullable="false" />
+    <Property Name="ModuloId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ModuloNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ModuloDesc" Type="varchar" MaxLength="100" />
   </EntityType>
@@ -12,11 +12,11 @@
     <Key>
       <PropertyRef Name="PersonaId" />
     </Key>
-    <Property Name="PersonaId" Type="bigint" Nullable="false" />
+    <Property Name="PersonaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PersonaNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="PersonaApellido" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="PersonaFchNac" Type="date" Nullable="false" />
-    <Property Name="PersonaFchIng" Type="datetime" Nullable="false" />
+    <Property Name="PersonaFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
     <Property Name="SexoId" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="RelRolMod">
@@ -47,7 +47,7 @@
     <Key>
       <PropertyRef Name="RolId" />
     </Key>
-    <Property Name="RolId" Type="smallint" Nullable="false" />
+    <Property Name="RolId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RolNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="RolDesc" Type="varchar" MaxLength="100" />
   </EntityType>
@@ -55,7 +55,7 @@
     <Key>
       <PropertyRef Name="SexoId" />
     </Key>
-    <Property Name="SexoId" Type="smallint" Nullable="false" />
+    <Property Name="SexoId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SexoNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="SexoDesc" Type="varchar" MaxLength="100" />
   </EntityType>
@@ -63,12 +63,12 @@
     <Key>
       <PropertyRef Name="UsuarioId" />
     </Key>
-    <Property Name="UsuarioId" Type="bigint" Nullable="false" />
+    <Property Name="UsuarioId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UsuarioNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="UsuarioEmail" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="UsuarioPass" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="UsuarioImg" Type="varchar(max)" />
-    <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" />
+    <Property Name="UsuarioFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
     <Property Name="UsuarioApp" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Persona_SexoId">

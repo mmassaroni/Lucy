@@ -17,18 +17,61 @@ namespace Lucy.Controllers
 
         public ActionResult Registro()
         {
+            //if (Request.RequestType == "GET")
+            //{
             RegistroViewModel Registro = new RegistroViewModel();
             //List<ModelCL.Sexo> lSexo = new List<ModelCL.Sexo>();
             //lSexo = db.Sexoes.ToList();
             //ViewBag.listaSexos = lSexo;
             List<ModelCL.Sexo> lSexo = db.Sexo.ToList();
             ViewBag.listaSexos = new SelectList(lSexo, "SexoId", "SexoNombre");
+            return View();
+            //}
+            //else
+            //{
 
-            return View(Registro);
+            //    return Content("Guardado");
+            //}
         }
 
-        // GET: Usuarios
-        public ActionResult Index()
+        public ActionResult RegistroPost(RegistroViewModel Registro)
+        {
+            try
+            {
+                ModelCL.Usuario Usuario = new ModelCL.Usuario();
+                Usuario.UsuarioNombre = Registro.UsuarioNombre;
+                Usuario.UsuarioEmail = Registro.UsuarioEmail;
+                Usuario.UsuarioPass = Registro.UsuarioPass;
+                Usuario.UsuarioApp = "Web";
+
+                db.Usuario.Add(Usuario);
+
+                ModelCL.Persona Persona = new ModelCL.Persona();
+                Persona.PersonaNombre = Registro.PersonaNombre;
+                Persona.PersonaApellido = Registro.PersonaApellido;
+                Persona.PersonaFchNac = Registro.PersonaFchNac;
+                Persona.SexoId = Registro.SexoId;
+
+                db.Persona.Add(Persona);
+
+                Usuario.Persona.Add(Persona);
+                Persona.Usuario.Add(Usuario);
+
+                db.Usuario.Add(Usuario);
+                db.Persona.Add(Persona);
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Content("Guardado");
+        }
+
+            // GET: Usuarios
+            public ActionResult Index()
         {
             return View(db.Usuario.ToList());
         }

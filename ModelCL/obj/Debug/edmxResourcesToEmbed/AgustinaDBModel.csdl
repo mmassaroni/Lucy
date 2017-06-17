@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="ModuloId" />
     </Key>
-    <Property Name="ModuloId" Type="Int16" Nullable="false" />
+    <Property Name="ModuloId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ModuloNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ModuloDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Rol" Relationship="Self.RelRolMod" FromRole="Modulo" ToRole="Rol" />
@@ -13,11 +13,11 @@
     <Key>
       <PropertyRef Name="PersonaId" />
     </Key>
-    <Property Name="PersonaId" Type="Int64" Nullable="false" />
+    <Property Name="PersonaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PersonaNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="PersonaApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PersonaFchNac" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="PersonaFchIng" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PersonaFchNac" Type="DateTime" Precision="0" Nullable="false" />
+    <Property Name="PersonaFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="SexoId" Type="Int16" Nullable="false" />
     <NavigationProperty Name="Sexo" Relationship="Self.FK_Persona_SexoId" FromRole="Persona" ToRole="Sexo" />
     <NavigationProperty Name="Usuario" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
@@ -26,7 +26,7 @@
     <Key>
       <PropertyRef Name="RolId" />
     </Key>
-    <Property Name="RolId" Type="Int16" Nullable="false" />
+    <Property Name="RolId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="RolNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="RolDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Modulo" Relationship="Self.RelRolMod" FromRole="Rol" ToRole="Modulo" />
@@ -36,7 +36,7 @@
     <Key>
       <PropertyRef Name="SexoId" />
     </Key>
-    <Property Name="SexoId" Type="Int16" Nullable="false" />
+    <Property Name="SexoId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="SexoNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="SexoDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_SexoId" FromRole="Sexo" ToRole="Persona" />
@@ -45,12 +45,12 @@
     <Key>
       <PropertyRef Name="UsuarioId" />
     </Key>
-    <Property Name="UsuarioId" Type="Int64" Nullable="false" />
+    <Property Name="UsuarioId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UsuarioNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UsuarioEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UsuarioPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UsuarioImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="UsuarioFchIng" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UsuarioFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
     <Property Name="UsuarioApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Persona" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
     <NavigationProperty Name="Rol" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />

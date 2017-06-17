@@ -24,7 +24,7 @@ namespace ModelCL
         public string PersonaNombre { get; set; }
         public string PersonaApellido { get; set; }
         public System.DateTime PersonaFchNac { get; set; }
-        public System.DateTime PersonaFchIng { get; set; }
+        public Nullable<System.DateTime> PersonaFchIng { get; set; }
         public short SexoId { get; set; }
     
         public virtual Sexo Sexo { get; set; }

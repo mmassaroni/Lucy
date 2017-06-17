@@ -26,7 +26,7 @@ namespace ModelCL
         public string UsuarioEmail { get; set; }
         public string UsuarioPass { get; set; }
         public string UsuarioImg { get; set; }
-        public System.DateTime UsuarioFchIng { get; set; }
+        public Nullable<System.DateTime> UsuarioFchIng { get; set; }
         public string UsuarioApp { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
