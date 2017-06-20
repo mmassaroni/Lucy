@@ -8,3 +8,13 @@ d:\documents\visual studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.dll
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.pdb
 D:\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.csprojResolveAssemblyReference.cache
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\ModelCL.dll.config
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\ModelCL.dll
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\ModelCL.pdb
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.dll
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.xml
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.csprojResolveAssemblyReference.cache
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.dll
+C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.pdb
