@@ -1,7 +1,0 @@
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\obj\Debug\EFRepository.csprojResolveAssemblyReference.cache
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\bin\Debug\EFRepository.dll
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\bin\Debug\EFRepository.pdb
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\bin\Debug\Repository.dll
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\bin\Debug\Repository.pdb
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\obj\Debug\EFRepository.dll
-D:\Documents\Visual Studio 2017\Projects\Lucy\EFRepository\obj\Debug\EFRepository.pdb
