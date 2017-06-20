@@ -16,7 +16,7 @@
     <Property Name="PersonaNombre" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="PersonaApellido" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="PersonaFchNac" Type="date" Nullable="false" />
-    <Property Name="PersonaFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
+    <Property Name="PersonaFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
     <Property Name="SexoId" Type="smallint" Nullable="false" />
   </EntityType>
   <EntityType Name="RelRolMod">
@@ -68,7 +68,7 @@
     <Property Name="UsuarioEmail" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="UsuarioPass" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="UsuarioImg" Type="varchar(max)" />
-    <Property Name="UsuarioFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
+    <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
     <Property Name="UsuarioApp" Type="varchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Persona_SexoId">

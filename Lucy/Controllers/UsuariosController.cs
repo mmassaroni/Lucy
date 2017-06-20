@@ -15,6 +15,29 @@ namespace Lucy.Controllers
     {
         private AgustinaEntities db = new AgustinaEntities();
 
+        public ActionResult Login()
+        {
+            LoginViewModel Login = new LoginViewModel();
+            return View(Login);
+        }
+
+        public ActionResult LoginPost(LoginViewModel Login)
+        {
+            string query = (from usuario in db.Usuario
+                where (usuario.UsuarioNombre == Login.LoginUsuario || 
+                usuario.UsuarioEmail == Login.LoginUsuario) && usuario.UsuarioPass == Login.LoginPass
+                select usuario.UsuarioNombre).FirstOrDefault();
+            if (query != null)
+            {
+                return Content("Ingresaste");
+            }
+            else
+            {
+                return Content("No ingresaste");
+            }
+            //ObjectQuery<ModelCL.Usuario> query = db.Usuario.Where("UsuarioNombre" == Login.LoginUsuario
+        }
+
         public ActionResult Registro()
         {
             //if (Request.RequestType == "GET")
@@ -25,7 +48,7 @@ namespace Lucy.Controllers
             //ViewBag.listaSexos = lSexo;
             List<ModelCL.Sexo> lSexo = db.Sexo.ToList();
             ViewBag.listaSexos = new SelectList(lSexo, "SexoId", "SexoNombre");
-            return View();
+            return View(Registro);
             //}
             //else
             //{
@@ -44,7 +67,11 @@ namespace Lucy.Controllers
                 Usuario.UsuarioPass = Registro.UsuarioPass;
                 Usuario.UsuarioApp = "Web";
 
-                db.Usuario.Add(Usuario);
+                ModelCL.Rol Rol = db.Rol.Find(2);//Free
+
+                Usuario.Rol.Add(Rol); 
+
+                //db.Usuario.Add(Usuario);
 
                 ModelCL.Persona Persona = new ModelCL.Persona();
                 Persona.PersonaNombre = Registro.PersonaNombre;
@@ -52,7 +79,7 @@ namespace Lucy.Controllers
                 Persona.PersonaFchNac = Registro.PersonaFchNac;
                 Persona.SexoId = Registro.SexoId;
 
-                db.Persona.Add(Persona);
+                //db.Persona.Add(Persona);
 
                 Usuario.Persona.Add(Persona);
                 Persona.Usuario.Add(Usuario);

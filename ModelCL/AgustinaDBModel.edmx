@@ -21,7 +21,7 @@
           <Property Name="PersonaNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PersonaApellido" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PersonaFchNac" Type="date" Nullable="false" />
-          <Property Name="PersonaFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="PersonaFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="SexoId" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="RelRolMod">
@@ -73,7 +73,7 @@
           <Property Name="UsuarioEmail" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="UsuarioPass" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UsuarioImg" Type="varchar(max)" />
-          <Property Name="UsuarioFchIng" Type="datetime" StoreGeneratedPattern="Computed" />
+          <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="UsuarioApp" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Persona_SexoId">
@@ -231,7 +231,7 @@
           <Property Name="PersonaNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PersonaApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PersonaFchNac" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="PersonaFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PersonaFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="SexoId" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Sexo" Relationship="Self.FK_Persona_SexoId" FromRole="Persona" ToRole="Sexo" />
           <NavigationProperty Name="Usuario" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
@@ -264,7 +264,7 @@
           <Property Name="UsuarioEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsuarioPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsuarioImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="UsuarioFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="UsuarioApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Persona" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
           <NavigationProperty Name="Rol" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />
