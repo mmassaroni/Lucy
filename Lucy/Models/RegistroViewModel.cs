@@ -53,6 +53,6 @@ namespace Lucy.Models
 
         [Required]
         [Display(Name = "Sexo")]
-        public ModelCL.Sexo SexoId { get; set; }
+        public short SexoId { get; set; }
     }
 }

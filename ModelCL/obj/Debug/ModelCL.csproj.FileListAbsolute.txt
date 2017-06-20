@@ -7,6 +7,7 @@ d:\documents\visual studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\bin\Debug\EntityFramework.SqlServer.xml
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.dll
 d:\documents\visual studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.pdb
+<<<<<<< HEAD
 D:\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.csprojResolveAssemblyReference.cache
 C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\ModelCL.dll.config
 C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin\Debug\ModelCL.dll
@@ -18,3 +19,5 @@ C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\bin
 C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.csprojResolveAssemblyReference.cache
 C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.dll
 C:\Users\Miguel Massaroni\Documents\Visual Studio 2017\Projects\Lucy\ModelCL\obj\Debug\ModelCL.pdb
+=======
+>>>>>>> origin/develop

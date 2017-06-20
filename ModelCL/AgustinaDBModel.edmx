@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AgustinaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AgustinaDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Modulo">
           <Key>
             <PropertyRef Name="ModuloId" />
           </Key>
-          <Property Name="ModuloId" Type="smallint" Nullable="false" />
+          <Property Name="ModuloId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ModuloNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ModuloDesc" Type="varchar" MaxLength="100" />
         </EntityType>
@@ -17,11 +17,11 @@
           <Key>
             <PropertyRef Name="PersonaId" />
           </Key>
-          <Property Name="PersonaId" Type="bigint" Nullable="false" />
+          <Property Name="PersonaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonaNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PersonaApellido" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PersonaFchNac" Type="date" Nullable="false" />
-          <Property Name="PersonaFchIng" Type="datetime" Nullable="false" />
+          <Property Name="PersonaFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="SexoId" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="RelRolMod">
@@ -52,7 +52,7 @@
           <Key>
             <PropertyRef Name="RolId" />
           </Key>
-          <Property Name="RolId" Type="smallint" Nullable="false" />
+          <Property Name="RolId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RolNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="RolDesc" Type="varchar" MaxLength="100" />
         </EntityType>
@@ -60,7 +60,7 @@
           <Key>
             <PropertyRef Name="SexoId" />
           </Key>
-          <Property Name="SexoId" Type="smallint" Nullable="false" />
+          <Property Name="SexoId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SexoNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="SexoDesc" Type="varchar" MaxLength="100" />
         </EntityType>
@@ -68,12 +68,12 @@
           <Key>
             <PropertyRef Name="UsuarioId" />
           </Key>
-          <Property Name="UsuarioId" Type="bigint" Nullable="false" />
+          <Property Name="UsuarioId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UsuarioNombre" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UsuarioEmail" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="UsuarioPass" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UsuarioImg" Type="varchar(max)" />
-          <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" />
+          <Property Name="UsuarioFchIng" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
           <Property Name="UsuarioApp" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Persona_SexoId">
@@ -210,8 +210,7 @@
             <End Role="RelUsuRol" EntitySet="RelUsuRol" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AgustinaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -219,7 +218,7 @@
           <Key>
             <PropertyRef Name="ModuloId" />
           </Key>
-          <Property Name="ModuloId" Type="Int16" Nullable="false" />
+          <Property Name="ModuloId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ModuloNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ModuloDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Rol" Relationship="Self.RelRolMod" FromRole="Modulo" ToRole="Rol" />
@@ -228,11 +227,11 @@
           <Key>
             <PropertyRef Name="PersonaId" />
           </Key>
-          <Property Name="PersonaId" Type="Int64" Nullable="false" />
+          <Property Name="PersonaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PersonaNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PersonaApellido" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PersonaFchNac" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PersonaFchIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonaFchNac" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="PersonaFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="SexoId" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Sexo" Relationship="Self.FK_Persona_SexoId" FromRole="Persona" ToRole="Sexo" />
           <NavigationProperty Name="Usuario" Relationship="Self.RelUsuPer" FromRole="Persona" ToRole="Usuario" />
@@ -241,7 +240,7 @@
           <Key>
             <PropertyRef Name="RolId" />
           </Key>
-          <Property Name="RolId" Type="Int16" Nullable="false" />
+          <Property Name="RolId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RolNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="RolDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Modulo" Relationship="Self.RelRolMod" FromRole="Rol" ToRole="Modulo" />
@@ -251,7 +250,7 @@
           <Key>
             <PropertyRef Name="SexoId" />
           </Key>
-          <Property Name="SexoId" Type="Int16" Nullable="false" />
+          <Property Name="SexoId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SexoNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SexoDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Persona" Relationship="Self.FK_Persona_SexoId" FromRole="Sexo" ToRole="Persona" />
@@ -260,12 +259,12 @@
           <Key>
             <PropertyRef Name="UsuarioId" />
           </Key>
-          <Property Name="UsuarioId" Type="Int64" Nullable="false" />
+          <Property Name="UsuarioId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UsuarioNombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsuarioEmail" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsuarioPass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UsuarioImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="UsuarioFchIng" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UsuarioFchIng" Type="DateTime" Precision="3" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="UsuarioApp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Persona" Relationship="Self.RelUsuPer" FromRole="Usuario" ToRole="Persona" />
           <NavigationProperty Name="Rol" Relationship="Self.RelUsuRol" FromRole="Usuario" ToRole="Rol" />
